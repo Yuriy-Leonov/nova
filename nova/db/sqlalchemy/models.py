@@ -89,6 +89,7 @@ class ComputeNode(BASE, NovaBase):
     hypervisor_type = Column(MediumText(), nullable=False)
     hypervisor_version = Column(Integer, nullable=False)
     hypervisor_hostname = Column(String(255))
+    hypervisor_qos = Column(String(255))
 
     # Free Ram, amount of activity (resize, migration, boot, etc) and
     # the number of running VM's are a good starting point for what's
