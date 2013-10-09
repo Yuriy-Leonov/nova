@@ -123,6 +123,7 @@ class BaseTestCase(test.TestCase):
 
         def fake_get_compute_nodes_in_db(context):
             fake_compute_nodes = [{'local_gb': 259,
+                                   'qos': 'bronze',
                                    'vcpus_used': 0,
                                    'deleted': 0,
                                    'hypervisor_type': 'powervm',
@@ -257,6 +258,7 @@ class BaseTestCase(test.TestCase):
         if not params:
             params = {}
 
+        # Here need add --req qos  + _db
         context = self.context.elevated()
         inst = {}
         inst['name'] = 'm1.small'
@@ -638,7 +640,7 @@ class ComputeTestCase(BaseTestCase):
         self.rt.update_available_resource(self.context.elevated())
         limits = {'vcpu': 3}
         filter_properties = {'limits': limits}
-
+        # Here fake compute node used
         # get total memory as reported by virt driver:
         resources = self.compute.driver.get_available_resource(NODENAME)
         self.assertEqual(1, resources['vcpus'])

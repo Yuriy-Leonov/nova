@@ -127,7 +127,8 @@ class HostOps(object):
                'hypervisor_version': self._get_hypervisor_version(),
                'hypervisor_hostname': platform.node(),
                'vcpus_used': 0,
-               'cpu_info': jsonutils.dumps(cpu_info)}
+               'cpu_info': jsonutils.dumps(cpu_info),
+               'qos': CONF.qos}
 
         return dic
 

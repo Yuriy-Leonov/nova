@@ -328,8 +328,9 @@ class FakeDriver(driver.ComputeDriver):
         """
         if nodename not in _FAKE_NODES:
             return {}
-
+        # Here fake copmute node set
         dic = {'vcpus': 1,
+               'qos': 'bronze',
                'memory_mb': 8192,
                'local_gb': 1028,
                'vcpus_used': 0,

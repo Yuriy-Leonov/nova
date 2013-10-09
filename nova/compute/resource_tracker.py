@@ -338,6 +338,7 @@ class ResourceTracker(object):
         """
         LOG.audit(_("Free ram (MB): %s") % resources['free_ram_mb'])
         LOG.audit(_("Free disk (GB): %s") % resources['free_disk_gb'])
+        LOG.audit(_("Qos: %s") % resources['qos'])
 
         vcpus = resources['vcpus']
         if vcpus:
@@ -550,7 +551,7 @@ class ResourceTracker(object):
             self._update_usage(resources, usage)
 
     def _verify_resources(self, resources):
-        resource_keys = ["vcpus", "memory_mb", "local_gb", "cpu_info",
+        resource_keys = ["vcpus", "memory_mb", "local_gb", "cpu_info", "qos",
                          "vcpus_used", "memory_mb_used", "local_gb_used"]
 
         missing_keys = [k for k in resource_keys if k not in resources]

@@ -104,6 +104,9 @@ compute_opts = [
                 default=False,
                 help='Whether to start guests that were running before the '
                      'host rebooted'),
+    cfg.StrOpt('qos',
+               default='bronze',
+               help='there need normal usage'),
     ]
 
 interval_opts = [

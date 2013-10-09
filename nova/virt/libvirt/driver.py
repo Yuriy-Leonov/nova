@@ -2853,7 +2853,8 @@ class LibvirtDriver(driver.ComputeDriver):
                'hypervisor_version': self.get_hypervisor_version(),
                'hypervisor_hostname': self.get_hypervisor_hostname(),
                'cpu_info': self.get_cpu_info(),
-               'disk_available_least': _get_disk_available_least()}
+               'disk_available_least': _get_disk_available_least(),
+               'qos': CONF.qos}
         return dic
 
     def check_can_live_migrate_destination(self, ctxt, instance_ref,
@@ -3805,6 +3806,7 @@ class HostState(object):
         data["hypervisor_hostname"] = self.driver.get_hypervisor_hostname()
         data["supported_instances"] = \
             self.driver.get_instance_capabilities()
+        data["qos"] = CONF.qos
 
         self._stats = data
 
